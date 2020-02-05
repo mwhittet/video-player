@@ -14,10 +14,25 @@ const updatePlayIcon = () =>
     : (play.innerHTML = '<i class="fa fa-pause fa-2x"></i>');
 
 // Update progress and timestamp
-const updateProgress = () => true;
+const updateProgress = () => {
+  progress.value = (video.currentTime / video.duration) * 100;
+
+  let minutes = Math.floor(video.currentTime / 60);
+  if (minutes < 10) {
+    minutes = '0' + String(minutes);
+  }
+
+  let seconds = Math.floor(video.currentTime % 60);
+  if (seconds < 10) {
+    seconds = '0' + String(seconds);
+  }
+
+  timestamp.innerHTML = `${minutes}:${seconds}`;
+};
 
 // Set video progress
-const setVideoProgress = () => true;
+const setVideoProgress = () =>
+  (video.currentTime = (+progress.value * video.duration) / 100);
 
 // Stop video
 const stopVideo = () => {
