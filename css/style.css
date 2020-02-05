@@ -47,7 +47,7 @@ main {
   outline: 0;
 }
 
-#controls .timestamp {
+#timestamp {
   font-weight: bold;
   margin-left: 10px;
 }
